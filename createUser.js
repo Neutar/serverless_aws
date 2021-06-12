@@ -13,7 +13,11 @@ exports.handler = async function (event, context) {
         TableName: process.env.USER_TABLE_NAME
     };
     myDocumentClient.put(params, function (err, data) {
-       // callback(err, data);
+        if (err) {
+            console.log("Error", err);
+          } else {
+            console.log("Success", data);
+          }
     });
 
     const response = {
